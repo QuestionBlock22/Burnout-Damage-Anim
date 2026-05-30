@@ -12,8 +12,6 @@
 # NTSC-J: 807cc1d0
 # NTSC-K: 807baf24
 
-.set DAMAGE, 0xF6
-
 .macro is_START_BOOST_FAIL
     andis. r12, r12, 0x0004
 .endm
@@ -21,7 +19,7 @@
 b start
 
 startDriveAnimation:
-sth r0, DAMAGE (r31)             # Original instruction
+sth r0, 0xF6 (r31)             # Original instruction
 b end
 
 start:
