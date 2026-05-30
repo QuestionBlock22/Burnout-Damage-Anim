@@ -19,10 +19,10 @@
     .err
 .endif
 
-.set DRIVE, 0x1a
+.set DAMAGE, 0x1a
 
 lhz r0, 0xFA (r31)
-cmpwi r0, DRIVE
+cmpwi r0, DAMAGE
 bne end
 lis r12, return@h
 ori r12, r12, return@l
