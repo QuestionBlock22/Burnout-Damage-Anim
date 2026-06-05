@@ -25,6 +25,8 @@ b end
 start:
 lwz r12, 0 (r31)
 lwz r12, 0x4 (r12)
+cmpwi r12, 0
+beq end
 lwz r12, 0x8 (r12)
 is_START_BOOST_FAIL
 beq startDriveAnimation         # Referred to as "DRIVE" internally and in the Ghidra Project.

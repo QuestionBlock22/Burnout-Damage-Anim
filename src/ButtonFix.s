@@ -8,13 +8,13 @@
 
 # .set region, '' # Fill with P, E, J, or K to assemble for a particular region.
 .if (region == 'P' || region == 'p')
-    .set return, 0x807ccaf0
+    .set return, 0x807ccb10
 .elseif (region == 'E' || region == 'e')
-    .set return, 0x807be090
+    .set return, 0x807be0b0
 .elseif (region == 'J' || region == 'j')
-    .set return, 0x807cc15c
+    .set return, 0x807cc17c
 .elseif (region == 'K' || region == 'k')
-    .set return, 0x807baeb0
+    .set return, 0x807baed0
 .else
     .err
 .endif
