@@ -20,14 +20,20 @@
 .endif
 
 .macro is_START_BOOST_FAIL
-    andis. r12, r12, 0x0004
+    rlwinm. r0, r12, 0, 13, 13
 .endm
+
+# Fix crash on console and Dolphin MMU before doing ANYTHING else.
+cmpwi r29, 0
+beq end
 
 lwz r12, 0 (r29)
 lwz r12, 0x4 (r12)
 cmpwi r12, 0
 beq end
 lwz r12, 0x8 (r12)
+
+
 is_START_BOOST_FAIL
 beq end
 lis r12, return@h

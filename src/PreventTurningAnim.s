@@ -13,22 +13,24 @@
 # NTSC-K: 807baf24
 
 .macro is_START_BOOST_FAIL
-    andis. r12, r12, 0x0004
+    rlwinm. r0, r12, 0, 13, 13
 .endm
 
-b start
+# Fix crash on console and Dolphin MMU before doing ANYTHING else.
+cmpwi r31, 0
+beq end
 
-startDriveAnimation:
-sth r0, 0xF6 (r31)             # Original instruction
-b end
-
-start:
 lwz r12, 0 (r31)
 lwz r12, 0x4 (r12)
 cmpwi r12, 0
 beq end
+
 lwz r12, 0x8 (r12)
 is_START_BOOST_FAIL
-beq startDriveAnimation         # Referred to as "DRIVE" internally and in the Ghidra Project.
+bne end
+
+startDriveAnimation:
+sth r0, 0xF6 (r31)                  # Original instruction
+b end
 
 end:
