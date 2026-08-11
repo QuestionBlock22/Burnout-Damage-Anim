@@ -32,8 +32,6 @@ lwz r12, 0x4 (r12)
 cmpwi r12, 0
 beq end
 lwz r12, 0x8 (r12)
-
-
 is_START_BOOST_FAIL
 beq end
 lis r12, return@h
