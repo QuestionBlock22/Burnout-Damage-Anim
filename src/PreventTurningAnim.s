@@ -24,12 +24,11 @@ lwz r12, 0 (r31)
 lwz r12, 0x4 (r12)
 cmpwi r12, 0
 beq end
-
 lwz r12, 0x8 (r12)
 is_START_BOOST_FAIL
 bne end
 
-startDriveAnimation:
+# Start the driving animation.
 sth r0, 0xF6 (r31)                  # Original instruction
 b end
 
